@@ -173,29 +173,29 @@ describe('EternalMarketpalce Contract', function () {
 		// Fetches the details of first marketplace item by its itemId
 		let item = await market.fetchItemById('1')
 
-		assert.equal(item.itemId, 1)
+		assert.equal(item.itemNo, 1)
 	})
 
-// 	// Test for fetchng details of all created Marketplace items
-// 	it('Should be able to get an item by its tokenId', async () => {
-// 		// Mints 2 NFTs
-// 		await nft.createUtilityNFT()
-// 		await nft.createUtilityNFT()
+	// Test for fetchng details of all created Marketplace items
+	it('Should be able to get an item by its tokenId', async () => {
+		// Mints 2 NFTs
+		await nft.createUtilityNFT()
+		await nft.createUtilityNFT()
 
-// 		// Puts the first NFT up for sale in the marketplace
-// 		await market.createEternalMarketItem(nftContractAddress, 0, auctionPrice, {
-// 			value: listingPrice,
-// 		})
+		// Puts the first NFT up for sale in the marketplace
+		await market.createUtilityMarketItem(nftContractAddress, 0, auctionPrice, {
+			value: listingPrice,
+		})
 
-// 		// Puts the second NFT up for sale in the marketplace
-// 		await market.createEternalMarketItem(nftContractAddress, 1, auctionPrice, {
-// 			value: listingPrice,
-// 		})
+		// Puts the second NFT up for sale in the marketplace
+		await market.createUtilityMarketItem(nftContractAddress, 1, auctionPrice, {
+			value: listingPrice,
+		})
 
-// 		// Fetches the details of all unsold marketplace items
-// 		// Returs 2 as two items are created and none is sold
-// 		let item = await market.fetchEternalItems()
+		// Fetches the details of all unsold marketplace items
+		// Returs 2 as two items are created and none is sold
+		let item = await market.fetchItems()
 
-// 		assert.equal(item.length, 2)
-// 	})
+		assert.equal(item.length, 2)
+	})
 })
