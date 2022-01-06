@@ -141,10 +141,10 @@ contract UtilityMarketplace is ReentrancyGuard {
     }
 
     /// @notice Returns the details of the unSold marketplace items by ItemId
-    /// @param itemId ID of the item to be fetched
+    /// @param itemNo ID of the item to be fetched
     /// @return Item The unsold marketplace item
-    function fetchItemById(uint256 itemId) public view returns(Item memory) {
-        return idToItem[itemId];
+    function fetchItemById(uint256 itemNo) public view returns(Item memory) {
+        return idToItem[itemNo];
     }
 
     /// @notice Returns the details of the marketplace items owned by the owner

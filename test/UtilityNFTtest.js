@@ -192,8 +192,8 @@ describe('EternalMarketpalce Contract', function () {
 			value: listingPrice,
 		})
 
-		// Fetches the details of all unsold marketplace items
-		// Returs 2 as two items are created and none is sold
+		// Fetch the details of all unsold marketplace items
+		// Return 2 as two items are created and none is sold
 		let item = await market.fetchItems()
 
 		assert.equal(item.length, 2)
