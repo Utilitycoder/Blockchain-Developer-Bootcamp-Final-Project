@@ -91,7 +91,7 @@ describe('EternalMarketpalce Contract', function () {
 	let auctionPrice
 
 	// Deploys the UtilityNFT contract and the UtilityMarket contract before each test
-	beforeEach('Eternal Marketplace', async () => {
+	beforeEach('Marketplace', async () => {
 		const Market = await ethers.getContractFactory('UtilityMarketplace')
 		market = await Market.deploy()
 		await market.deployed()
@@ -113,7 +113,7 @@ describe('EternalMarketpalce Contract', function () {
 		// Mints a NFT
 		await nft.createUtilityNFT()
 
-		// Puts the NFT up for sale in the eternal marketplace
+		// Puts the NFT up for sale in the Utility marketplace
 		await market.createUtilityMarketItem(nftContractAddress, 0, auctionPrice, {
 			value: listingPrice,
 		})
@@ -124,76 +124,76 @@ describe('EternalMarketpalce Contract', function () {
 		assert.equal(items.length, 1)
 	})
 
-// 	// Test for creation and sale of an Eternal Marketplace item
-// 	it('Should be able to execute Eternal Item Sale', async () => {
+	// Test for creation and sale of an Marketplace item
+	it('Should be able to execute Item Sale', async () => {
+		// Mints 2 NFTs
+		await nft.createUtilityNFT()
+		await nft.createUtilityNFT()
+
+		// Puts the first NFT up for sale in the Utility marketplace
+		await market.createUtilityMarketItem(nftContractAddress, 0, auctionPrice, {
+			value: listingPrice,
+		})
+
+		// Puts the second NFT up for sale in the Utility marketplace
+		await market.createUtilityMarketItem(nftContractAddress, 1, auctionPrice, {
+			value: listingPrice,
+		})
+
+		const [_, buyerAddress] = await ethers.getSigners()
+
+		// Creates a sale for the first NFT and transfers it from the owner to the buyer through the marketplace contract
+		await market
+			.connect(buyerAddress)
+			.createItemSale(nftContractAddress, 1, { value: auctionPrice })
+
+		// Fetches the remaining unsold marketplace items
+		// Returns one as one of the two NFT minted is sold
+		let items = await market.fetchItems()
+
+		assert.equal(items.length, 1)
+	})
+
+	// Test for fetchng details of an Marketplace item using its itemId
+	it('Should be able to get an item by its tokenId', async () => {
+		// Mints 2 NFTs
+		await nft.createUtilityNFT()
+		await nft.createUtilityNFT()
+
+		// Puts the first NFT up for sale in the marketplace
+		await market.createUtilityMarketItem(nftContractAddress, 0, auctionPrice, {
+			value: listingPrice,
+		})
+
+		// Puts the second NFT up for sale in the marketplace
+		await market.createUtilityMarketItem(nftContractAddress, 1, auctionPrice, {
+			value: listingPrice,
+		})
+
+		// Fetches the details of first marketplace item by its itemId
+		let item = await market.fetchItemById('1')
+
+		assert.equal(item.itemId, 1)
+	})
+
+// 	// Test for fetchng details of all created Marketplace items
+// 	it('Should be able to get an item by its tokenId', async () => {
 // 		// Mints 2 NFTs
 // 		await nft.createUtilityNFT()
 // 		await nft.createUtilityNFT()
 
-// 		// Puts the first NFT up for sale in the eternal marketplace
+// 		// Puts the first NFT up for sale in the marketplace
 // 		await market.createEternalMarketItem(nftContractAddress, 0, auctionPrice, {
 // 			value: listingPrice,
 // 		})
 
-// 		// Puts the second NFT up for sale in the eternal marketplace
-// 		await market.createEternalMarketItem(nftContractAddress, 1, auctionPrice, {
-// 			value: listingPrice,
-// 		})
-
-// 		const [_, buyerAddress] = await ethers.getSigners()
-
-// 		// Creates a sale for the first NFT and transfers it from the owner to the buyer through the marketplace contract
-// 		await market
-// 			.connect(buyerAddress)
-// 			.createEternalItemSale(nftContractAddress, 1, { value: auctionPrice })
-
-// 		// Fetches the remaining unsold marketplace items
-// 		// Returns one as one of the two NFT minted is sold
-// 		let items = await market.fetchEternalItems()
-
-// 		assert.equal(items.length, 1)
-// 	})
-
-// 	// Test for fetchng details of an Eternal Marketplace item using its itemId
-// 	it('Should be able to get an Eternal item by its tokenId', async () => {
-// 		// Mints 2 NFTs
-// 		await nft.createUtilityNFT()
-// 		await nft.createUtilityNFT()
-
-// 		// Puts the first NFT up for sale in the eternal marketplace
-// 		await market.createEternalMarketItem(nftContractAddress, 0, auctionPrice, {
-// 			value: listingPrice,
-// 		})
-
-// 		// Puts the second NFT up for sale in the eternal marketplace
-// 		await market.createEternalMarketItem(nftContractAddress, 1, auctionPrice, {
-// 			value: listingPrice,
-// 		})
-
-// 		// Fetches the details of first marketplace item by its itemId
-// 		let item = await market.fetchEternalItemById(1)
-
-// 		assert.equal(item.itemId, 1)
-// 	})
-
-// 	// Test for fetchng details of all created Eternal Marketplace items
-// 	it('Should be able to get an Eternal item by its tokenId', async () => {
-// 		// Mints 2 NFTs
-// 		await nft.createUtilityNFT()
-// 		await nft.createUtilityNFT()
-
-// 		// Puts the first NFT up for sale in the eternal marketplace
-// 		await market.createEternalMarketItem(nftContractAddress, 0, auctionPrice, {
-// 			value: listingPrice,
-// 		})
-
-// 		// Puts the second NFT up for sale in the eternal marketplace
+// 		// Puts the second NFT up for sale in the marketplace
 // 		await market.createEternalMarketItem(nftContractAddress, 1, auctionPrice, {
 // 			value: listingPrice,
 // 		})
 
 // 		// Fetches the details of all unsold marketplace items
-// 		// Returs 2 as two eternal items are created and none is sold
+// 		// Returs 2 as two items are created and none is sold
 // 		let item = await market.fetchEternalItems()
 
 // 		assert.equal(item.length, 2)

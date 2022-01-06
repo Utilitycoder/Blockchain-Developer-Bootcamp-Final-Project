@@ -9,7 +9,7 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 /// @title UtilityMarketplace
 /// @author Lawal Abubakar Babatunde
 /// @dev This contract is used to create a marketplace for the Eternal NFTs.
-/// @dev Inherits ReentrancyGuard which is deployed on createEternalMarketItem() and createEternalItemSale() functions
+/// @dev Inherits ReentrancyGuard which is deployed on createEternalMarketItem() and createItemSale() functions
 /// @dev Uses Counters library for tracking itemID for the marketplace items created.
 /// @dev Uses Counters library for tracking number of items Sold.
 contract UtilityMarketplace is ReentrancyGuard {
@@ -24,7 +24,7 @@ contract UtilityMarketplace is ReentrancyGuard {
         owner = payable(msg.sender);
     }
 
-    struct EternalItem {
+    struct Item {
         uint256 itemNo;
         address nftContract;
         uint256 tokenId;
@@ -34,9 +34,9 @@ contract UtilityMarketplace is ReentrancyGuard {
         bool sold;
     }
 
-    mapping(uint256 => EternalItem) private idToEternalItem;
+    mapping(uint256 => Item) private idToItem;
 
-    event EternalItemCreated (
+    event ItemCreated (
         uint256 indexed itemNo,
         address indexed nftContract,
         uint256 indexed tokenId,
@@ -66,7 +66,7 @@ contract UtilityMarketplace is ReentrancyGuard {
 
         uint256 itemNo = _itemNo.current();
 
-        idToEternalItem[itemNo] = EternalItem(
+        idToItem[itemNo] = Item(
             itemNo,
             nftContract,
             tokenId,
@@ -80,7 +80,7 @@ contract UtilityMarketplace is ReentrancyGuard {
 
         _itemNo.increment();
 
-        emit EternalItemCreated(
+        emit ItemCreated(
             itemNo,
             nftContract,
             tokenId,
@@ -101,37 +101,37 @@ contract UtilityMarketplace is ReentrancyGuard {
         uint256 itemNo
         ) public payable nonReentrant {
 
-        uint256 tokenId = idToEternalItem[itemNo].tokenId;
-        uint256 price = idToEternalItem[itemNo].price;
+        uint256 tokenId = idToItem[itemNo].tokenId;
+        uint256 price = idToItem[itemNo].price;
 
         require(msg.value == price, "Please make sure the amount to be paid is equal to the listed price");
 
-        (bool success, ) = idToEternalItem[itemNo].seller.call{value: msg.value}("");
+        (bool success, ) = idToItem[itemNo].seller.call{value: msg.value}("");
         require(success, "Transfer failed");
 
         IERC721(nftContract).transferFrom(address(this), msg.sender, tokenId);
 
-        idToEternalItem[itemNo].owner = payable(msg.sender);
-        idToEternalItem[itemNo].sold = true;
+        idToItem[itemNo].owner = payable(msg.sender);
+        idToItem[itemNo].sold = true;
         _itemSold.increment();
 
         payable(owner).transfer(initialPrice);
     }
 
     /// @notice Returns the details of all the unsold marketplace items
-    /// @return EternalItem[] All the unsold marketplace items
+    /// @return Item[] All the unsold marketplace items
 
-    function fetchItems() public view returns(EternalItem[] memory) {
+    function fetchItems() public view returns(Item[] memory) {
         uint256 itemCount = _itemNo.current();
         uint256 unsoldItemCount = _itemNo.current() - _itemSold.current();
         uint256 currentIndex = 0;
 
-        EternalItem[] memory items = new EternalItem[](unsoldItemCount);
+        Item[] memory items = new Item[](unsoldItemCount);
         
         for(uint256 i = 0; i < itemCount; i++) {
-            if (idToEternalItem[i].owner == address(0)) {
+            if (idToItem[i].owner == address(0)) {
                 uint256 currentId = i;
-                EternalItem storage currentItem = idToEternalItem[currentId];
+                Item storage currentItem = idToItem[currentId];
                 items[currentIndex] = currentItem;
                 currentIndex += 1;
             }
@@ -142,30 +142,30 @@ contract UtilityMarketplace is ReentrancyGuard {
 
     /// @notice Returns the details of the unSold marketplace items by ItemId
     /// @param itemId ID of the item to be fetched
-    /// @return EternalItem The unsold marketplace item
-    function fetchEternalItemById(uint256 itemId) public view returns(EternalItem memory) {
-        return idToEternalItem[itemId];
+    /// @return Item The unsold marketplace item
+    function fetchItemById(uint256 itemId) public view returns(Item memory) {
+        return idToItem[itemId];
     }
 
     /// @notice Returns the details of the marketplace items owned by the owner
-    /// @return EternalItem[] All the marketplace items owned by the owner
-    function fetchMyEternalItems() public view returns(EternalItem[] memory) {
+    /// @return Item[] All the marketplace items owned by the owner
+    function fetchMyItems() public view returns(Item[] memory) {
         uint totalItemCount = _itemNo.current();
         uint itemCount = 0;
         uint currentIndex = 0;
 
         for (uint i = 0; i < totalItemCount; i++) {
-            if (idToEternalItem[i].owner == msg.sender) {
+            if (idToItem[i].owner == msg.sender) {
                 itemCount += 1;
             }
         }
 
-        EternalItem[] memory items = new EternalItem[](itemCount);
+        Item[] memory items = new Item[](itemCount);
 
         for (uint i = 0; i < totalItemCount; i++) {
-            if (idToEternalItem[i].owner == msg.sender) {
+            if (idToItem[i].owner == msg.sender) {
                 uint currentId = i;
-                EternalItem storage currentItem = idToEternalItem[currentId];
+                Item storage currentItem = idToItem[currentId];
                 items[currentIndex] = currentItem;
                 currentIndex += 1;
             }
