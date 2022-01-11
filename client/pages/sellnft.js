@@ -81,12 +81,12 @@ const sellnft = () => {
 				const tokenId = router.query.id
 
 				setMiningStatus(0)
-				let listingPrice = await marketContract.getListingPrice()
+				let listingPrice = await marketContract.getInitialPrice()
 				listingPrice = listingPrice.toString()
 
 				const itemPrice = ethers.utils.parseUnits(price, 'ether')
 
-				let tx = await marketContract.createEternalMarketItem(
+				let tx = await marketContract.createUtilityMarketItem(
 					nftContractAddress,
 					tokenId,
 					itemPrice,
