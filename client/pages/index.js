@@ -73,7 +73,7 @@ export default function Home() {
 				console.log("Ethereum object doesn't exist!")
 			}
 		} catch (error) {
-			console.log('Error loading eternal nft', error)
+			console.log('Error loading utility nft', error)
 			setTxError(error.message)
 		}
 	}
