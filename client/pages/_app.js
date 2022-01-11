@@ -117,7 +117,7 @@ function MyApp({ Component, pageProps }) {
 						Welcome to Eternal Domain
 					</div>
 					<button
-						className='text-2xl font-bold py-3 px-12 bg-gray-800 text-gray-100 shadow-xl rounded-lg mb-10 hover:scale-105 transition duration-500 ease-in-out'
+						className='text-2xl font-bold py-3 px-12 bg-green-800 text-gray-100 shadow-xl rounded-lg mb-10 hover:scale-105 transition duration-500 ease-in-out'
 						onClick={connectWallet}
 					>
 						Connect Your Wallet
