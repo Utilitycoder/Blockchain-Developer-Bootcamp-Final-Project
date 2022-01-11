@@ -27,7 +27,7 @@ export default function Home() {
 	}
 
 	// Fetches the marketplace items put for sale
-	const loadEternalNFT = async () => {
+	const loadUtilityNFT = async () => {
 		try {
 			const { ethereum } = window
 
@@ -56,7 +56,7 @@ export default function Home() {
 
 						let item = {
 							price,
-							itemId: i.itemId.toNumber(),
+							itemNo: i.itemNo.toNumber(),
 							tokenId: i.tokenId.toNumber(),
 							seller: i.seller,
 							owner: i.owner,
@@ -79,7 +79,7 @@ export default function Home() {
 	}
 
 	useEffect(() => {
-		loadEternalNFT()
+		loadUtilityNFT()
 	}, [])
 
 	return (
