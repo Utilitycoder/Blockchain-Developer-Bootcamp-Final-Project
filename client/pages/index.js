@@ -85,8 +85,8 @@ export default function Home() {
 	return (
 		<div className='flex flex-col justify-center items-center'>
 			<Head>
-				<title>Eternal Domain</title>
-				<meta name='description' content='Eternal Domain' />
+				<title>Utility NFT</title>
+				<meta name='description' content='Utility NFT place' />
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
 
