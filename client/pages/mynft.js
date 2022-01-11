@@ -3,8 +3,8 @@ import { ethers } from 'ethers'
 
 import { nftContractAddress, nftMarketAddress } from '../config.js'
 
-import NFT from '../utils/EternalNFT.json'
-import Market from '../utils/EternalMarketplace.json'
+import NFT from '../utils/UtilityNFT.json'
+import Market from '../utils/UtilityMarketplace.json'
 import axios from 'axios'
 import Loader from 'react-loader-spinner'
 
