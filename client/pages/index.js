@@ -5,8 +5,8 @@ import axios from 'axios'
 
 import { nftContractAddress, nftMarketAddress } from '../config.js'
 
-import NFT from '../utils/EternalNFT.json'
-import Market from '../utils/EternalMarketplace.json'
+import NFT from '../utils/UtilityNFT.json'
+import Market from '../utils/UtilityMarketplace.json'
 
 import Loader from 'react-loader-spinner'
 import { useRouter } from 'next/router'
@@ -45,7 +45,7 @@ export default function Home() {
 					signer
 				)
 
-				const itemsData = await marketContract.fetchEternalItems()
+				const itemsData = await marketContract.fetchItems()
 
 				const items = await Promise.all(
 					itemsData.map(async (i) => {
@@ -90,13 +90,13 @@ export default function Home() {
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
 
-			<div className='font-bold text-4xl mt-12'>Eternal Marketplace</div>
+			<div className='font-bold text-4xl mt-12'>Utility NFT Marketplace</div>
 
 			<div>
 				{loadingState === 0 ? (
 					txError === null ? (
 						<div className='flex flex-col justify-center items-center'>
-							<div className='text-lg font-bold mt-16'>Loading Items</div>
+							<div className='text-lg font-bold mt-16'>Items are loading, please wait.</div>
 							<Loader
 								className='flex justify-center items-center pt-12'
 								type='TailSpin'
