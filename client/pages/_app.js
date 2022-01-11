@@ -62,7 +62,7 @@ function MyApp({ Component, pageProps }) {
 			const localhostChainId = `0x${Number(devChainId).toString(16)}`
 
 			if (chainId !== rinkebyChainId && chainId !== localhostChainId) {
-				alert('You are not connected to the Rinkeby Testnet!')
+				alert('Please change your network to Rinkeby Testnet!')
 				return
 			}
 
