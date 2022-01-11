@@ -44,7 +44,7 @@ const buynft = () => {
 				const tokenId = router.query.tokenid
 				setId(tokenId)
 
-				const itemId = router.query.itemid
+				const itemId = router.query.itemNo
 
 				const itemData = await nftContract.tokenURI(tokenId)
 				const data = await axios.get(itemData)
@@ -84,7 +84,7 @@ const buynft = () => {
 					signer
 				)
 
-				const itemId = router.query.itemid
+				const itemId = router.query.itemNo
 
 				const tokenData = await marketContract.fetchItemById(itemNo)
 				const price = ethers.utils.parseUnits(tokenData[5].toString(), 'wei')
@@ -92,7 +92,7 @@ const buynft = () => {
 				setMiningStatus(0)
 				const tx = await marketContract.createItemSale(
 					nftContractAddress,
-					itemId,
+					itemNo,
 					{
 						value: price,
 					}
