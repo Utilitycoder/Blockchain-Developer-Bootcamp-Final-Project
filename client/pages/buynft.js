@@ -50,7 +50,7 @@ const buynft = () => {
 				const data = await axios.get(itemData)
 				setNft(data.data)
 
-				const tokenData = await marketContract.fetchEternalItemById(itemId)
+				const tokenData = await marketContract.fetchItemById(itemId)
 
 				const itemPrice = ethers.utils.formatEther(tokenData[5])
 
@@ -86,7 +86,7 @@ const buynft = () => {
 
 				const itemId = router.query.itemid
 
-				const tokenData = await marketContract.fetchEternalItemById(itemId)
+				const tokenData = await marketContract.fetchItemById(itemId)
 				const price = ethers.utils.parseUnits(tokenData[5].toString(), 'wei')
 
 				setMiningStatus(0)
