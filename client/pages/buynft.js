@@ -50,7 +50,7 @@ const buynft = () => {
 				const data = await axios.get(itemData)
 				setNft(data.data)
 
-				const tokenData = await marketContract.fetchItemById(itemId)
+				const tokenData = await marketContract.fetchItemById(itemNo)
 
 				const itemPrice = ethers.utils.formatEther(tokenData[5])
 
@@ -70,7 +70,7 @@ const buynft = () => {
 	}
 
 	// Creates transaction to buy NFT from the marketplace
-	const buyEternalNft = async () => {
+	const buyUtilityNft = async () => {
 		try {
 			const { ethereum } = window
 
@@ -86,11 +86,11 @@ const buynft = () => {
 
 				const itemId = router.query.itemid
 
-				const tokenData = await marketContract.fetchItemById(itemId)
+				const tokenData = await marketContract.fetchItemById(itemNo)
 				const price = ethers.utils.parseUnits(tokenData[5].toString(), 'wei')
 
 				setMiningStatus(0)
-				const tx = await marketContract.createEternalItemSale(
+				const tx = await marketContract.createItemSale(
 					nftContractAddress,
 					itemId,
 					{
@@ -185,7 +185,7 @@ const buynft = () => {
 				</div>
 				<div className='flex flex-col gap-y-4 w-96'>
 					<buttom
-						onClick={buyEternalNft}
+						onClick={buyUtilityNft}
 						className='flex justify-center items-center h-12 rounded-lg shadow-lg bg-gray-800 text-gray-100 font-bold text-lg cursor-pointer hover:shadow-lg hover:scale-105 transition duration-500 ease-in-out'
 					>
 						Buy
