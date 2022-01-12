@@ -19,10 +19,10 @@ export default function Home() {
 	const router = useRouter()
 
 	// Routes to the buynft page
-	const buyToken = (tokenId, itemId) => {
+	const buyToken = (tokenId, itemNo) => {
 		router.push({
 			pathname: '/buynft',
-			query: { tokenid: tokenId, itemid: itemId },
+			query: { tokenid: tokenId, itemid: itemNo },
 		})
 	}
 
