@@ -31,7 +31,7 @@ function MyApp({ Component, pageProps }) {
 		if (ethereum) {
 			console.log('Got the ethereum obejct: ', ethereum)
 		} else {
-			console.log('No Wallet found. Connect Wallet')
+			console.log('No Wallet found. Please Connect Wallet')
 		}
 
 		const accounts = await ethereum.request({ method: 'eth_accounts' })
@@ -62,7 +62,7 @@ function MyApp({ Component, pageProps }) {
 			const localhostChainId = `0x${Number(devChainId).toString(16)}`
 
 			if (chainId !== rinkebyChainId && chainId !== localhostChainId) {
-				alert('Please change your network to Rinkeby Testnet!')
+				alert('You are not connected to the Rinkeby Testnet! Please Check Your Metamask wallet and change to Rinkeby')
 				return
 			}
 
@@ -114,13 +114,13 @@ function MyApp({ Component, pageProps }) {
 						</svg>
 					</div>
 					<div className='text-3xl font-extrabold'>
-						Welcome to Utility NFT Marketplace
+						Welcome to Utility Domain
 					</div>
 					<button
-						className='text-2xl font-bold py-3 px-12 bg-green-800 text-gray-100 shadow-xl rounded-lg mb-10 hover:scale-105 transition duration-500 ease-in-out'
+						className='text-2xl font-bold py-3 px-12 bg-gray-800 text-gray-100 shadow-xl rounded-lg mb-10 hover:scale-105 transition duration-500 ease-in-out'
 						onClick={connectWallet}
 					>
-						Connect Your Wallet
+						Connect Wallet
 					</button>
 				</div>
 			) : correctNetwork ? (
@@ -139,7 +139,7 @@ function MyApp({ Component, pageProps }) {
 										<path d='M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5 8 5.961 14.154 3.5 8.186 1.113zM15 4.239l-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z' />
 									</svg>
 								</div>
-								<div>Utility NFT Place</div>
+								<div>Utility NFT Marketplace</div>
 							</div>
 						</Link>
 

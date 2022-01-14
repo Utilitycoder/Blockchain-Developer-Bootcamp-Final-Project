@@ -19,10 +19,10 @@ export default function Home() {
 	const router = useRouter()
 
 	// Routes to the buynft page
-	const buyToken = (tokenId, itemNo) => {
+	const buyToken = (tokenId, itemId) => {
 		router.push({
 			pathname: '/buynft',
-			query: { tokenid: tokenId, itemid: itemNo },
+			query: { tokenid: tokenId, itemid: itemId },
 		})
 	}
 
@@ -32,7 +32,7 @@ export default function Home() {
 			const { ethereum } = window
 
 			if (ethereum) {
-				const provider = await new ethers.providers.Web3Provider(ethereum)
+				const provider = new ethers.providers.Web3Provider(ethereum)
 				const signer = provider.getSigner()
 				const nftContract = new ethers.Contract(
 					nftContractAddress,
@@ -45,7 +45,7 @@ export default function Home() {
 					signer
 				)
 
-				const itemsData = await marketContract.fetchItems()
+				const itemsData = await marketContract.fetchUtilityItems()
 
 				const items = await Promise.all(
 					itemsData.map(async (i) => {
@@ -56,7 +56,7 @@ export default function Home() {
 
 						let item = {
 							price,
-							itemNo: i.itemNo.toNumber(),
+							itemId: i.itemId.toNumber(),
 							tokenId: i.tokenId.toNumber(),
 							seller: i.seller,
 							owner: i.owner,
@@ -73,7 +73,7 @@ export default function Home() {
 				console.log("Ethereum object doesn't exist!")
 			}
 		} catch (error) {
-			console.log('Error loading utility nft', error)
+			console.log('Error loading Utility nft', error)
 			setTxError(error.message)
 		}
 	}
@@ -85,8 +85,8 @@ export default function Home() {
 	return (
 		<div className='flex flex-col justify-center items-center'>
 			<Head>
-				<title>Utility NFT</title>
-				<meta name='description' content='Utility NFT place' />
+				<title>Utility NFT Marketplace</title>
+				<meta name='description' content='Utility Domain' />
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
 
@@ -96,7 +96,7 @@ export default function Home() {
 				{loadingState === 0 ? (
 					txError === null ? (
 						<div className='flex flex-col justify-center items-center'>
-							<div className='text-lg font-bold mt-16'>Items are loading, please wait.</div>
+							<div className='text-lg font-bold mt-16'>Loading NFT Items</div>
 							<Loader
 								className='flex justify-center items-center pt-12'
 								type='TailSpin'
@@ -168,7 +168,7 @@ export default function Home() {
 					</div>
 				) : (
 					<div className='text-centre font-bold text-xl mt-16'>
-						No Items in Marketplace
+						No Items Available in Marketplace
 					</div>
 				)}
 			</div>

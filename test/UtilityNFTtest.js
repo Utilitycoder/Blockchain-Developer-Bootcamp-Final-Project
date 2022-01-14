@@ -82,7 +82,7 @@ describe('UtilityNFT Contract', async () => {
 	})
 })
 
-describe('EternalMarketpalce Contract', function () {
+describe('UtilityMarketpalce Contract', function () {
 	let nft
 	let market
 	let marketContractAddress
@@ -91,7 +91,7 @@ describe('EternalMarketpalce Contract', function () {
 	let auctionPrice
 
 	// Deploys the UtilityNFT contract and the UtilityMarket contract before each test
-	beforeEach('Marketplace', async () => {
+	beforeEach('Utility Marketplace', async () => {
 		const Market = await ethers.getContractFactory('UtilityMarketplace')
 		market = await Market.deploy()
 		await market.deployed()
@@ -102,14 +102,14 @@ describe('EternalMarketpalce Contract', function () {
 		await nft.deployed()
 		nftContractAddress = await nft.address
 
-		listingPrice = await market.getInitialPrice()
+		listingPrice = await market.getListingPrice()
 		listingPrice = listingPrice.toString()
 
 		auctionPrice = ethers.utils.parseUnits('1', 'ether')
 	})
 
 	// Test for creation of an Utility Marketplace item
-	it('Should be able to create an NFT Item', async () => {
+	it('Should be able to create an Utility Item', async () => {
 		// Mints a NFT
 		await nft.createUtilityNFT()
 
@@ -119,13 +119,13 @@ describe('EternalMarketpalce Contract', function () {
 		})
 
 		// Fetches the remaining unsold marketplace items
-		let items = await market.fetchItems()
+		let items = await market.fetchUtilityItems()
 
 		assert.equal(items.length, 1)
 	})
 
-	// Test for creation and sale of an Marketplace item
-	it('Should be able to execute Item Sale', async () => {
+	// Test for creation and sale of an Utility Marketplace item
+	it('Should be able to execute Utility Item Sale', async () => {
 		// Mints 2 NFTs
 		await nft.createUtilityNFT()
 		await nft.createUtilityNFT()
@@ -145,56 +145,56 @@ describe('EternalMarketpalce Contract', function () {
 		// Creates a sale for the first NFT and transfers it from the owner to the buyer through the marketplace contract
 		await market
 			.connect(buyerAddress)
-			.createItemSale(nftContractAddress, 1, { value: auctionPrice })
+			.createUtilityItemSale(nftContractAddress, 1, { value: auctionPrice })
 
 		// Fetches the remaining unsold marketplace items
 		// Returns one as one of the two NFT minted is sold
-		let items = await market.fetchItems()
+		let items = await market.fetchUtilityItems()
 
 		assert.equal(items.length, 1)
 	})
 
-	// Test for fetchng details of an Marketplace item using its itemId
-	it('Should be able to get an item by its tokenId', async () => {
+	// Test for fetchng details of an Utility Marketplace item using its itemId
+	it('Should be able to get an Utility item by its tokenId', async () => {
 		// Mints 2 NFTs
 		await nft.createUtilityNFT()
 		await nft.createUtilityNFT()
 
-		// Puts the first NFT up for sale in the marketplace
+		// Puts the first NFT up for sale in the Utility marketplace
 		await market.createUtilityMarketItem(nftContractAddress, 0, auctionPrice, {
 			value: listingPrice,
 		})
 
-		// Puts the second NFT up for sale in the marketplace
+		// Puts the second NFT up for sale in the Utility marketplace
 		await market.createUtilityMarketItem(nftContractAddress, 1, auctionPrice, {
 			value: listingPrice,
 		})
 
 		// Fetches the details of first marketplace item by its itemId
-		let item = await market.fetchItemById('1')
+		let item = await market.fetchUtilityItemById(1)
 
-		assert.equal(item.itemNo, 1)
+		assert.equal(item.itemId, 1)
 	})
 
-	// Test for fetchng details of all created Marketplace items
-	it('Should be able to get an item by its tokenId', async () => {
+	// Test for fetchng details of all created Utility Marketplace items
+	it('Should be able to get an Utility item by its tokenId', async () => {
 		// Mints 2 NFTs
 		await nft.createUtilityNFT()
 		await nft.createUtilityNFT()
 
-		// Puts the first NFT up for sale in the marketplace
+		// Puts the first NFT up for sale in the Utility marketplace
 		await market.createUtilityMarketItem(nftContractAddress, 0, auctionPrice, {
 			value: listingPrice,
 		})
 
-		// Puts the second NFT up for sale in the marketplace
+		// Puts the second NFT up for sale in the Utility marketplace
 		await market.createUtilityMarketItem(nftContractAddress, 1, auctionPrice, {
 			value: listingPrice,
 		})
 
-		// Fetch the details of all unsold marketplace items
-		// Return 2 as two items are created and none is sold
-		let item = await market.fetchItems()
+		// Fetches the details of all unsold marketplace items
+		// Returs 2 as two Utility items are created and none is sold
+		let item = await market.fetchUtilityItems()
 
 		assert.equal(item.length, 2)
 	})

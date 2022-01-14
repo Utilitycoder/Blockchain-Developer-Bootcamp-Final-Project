@@ -35,7 +35,7 @@ const Home = () => {
 			const { ethereum } = window
 
 			if (ethereum) {
-				const provider = await new ethers.providers.Web3Provider(ethereum)
+				const provider = new ethers.providers.Web3Provider(ethereum)
 				const signer = provider.getSigner()
 				const nftContract = new ethers.Contract(
 					nftContractAddress,
@@ -48,7 +48,7 @@ const Home = () => {
 					signer
 				)
 
-				const data = await marketContract.fetchMyItems()
+				const data = await marketContract.fetchMyUtilityItems()
 
 				const items = await Promise.all(
 					data.map(async (i) => {
@@ -71,18 +71,18 @@ const Home = () => {
 				console.log("Ethereum object doesn't exist!")
 			}
 		} catch (error) {
-			console.log('Error loading eternal nft', error)
+			console.log('Error loading Utility nft', error)
 			setTxError(error.message)
 		}
 	}
 
 	// Gets data of NFTs minted by the user
-	const loadMyNFT = async () => {
+	const loadMyUtilityNFT = async () => {
 		try {
 			const { ethereum } = window
 
 			if (ethereum) {
-				const provider = await new ethers.providers.Web3Provider(ethereum)
+				const provider = new ethers.providers.Web3Provider(ethereum)
 				const signer = provider.getSigner()
 				const nftContract = new ethers.Contract(
 					nftContractAddress,
@@ -118,13 +118,13 @@ const Home = () => {
 				console.log("Ethereum object doesn't exist!")
 			}
 		} catch (error) {
-			console.log('Error loading utility nft, please try again later', error)
+			console.log('Error loading Utility nft', error)
 			setTxError(error.message)
 		}
 	}
 
 	useEffect(() => {
-		loadMyNFT()
+		loadMyUtilityNFT()
 		loadBoughtNFT()
 	}, [])
 
@@ -133,12 +133,12 @@ const Home = () => {
 			<div className='flex justify-center'>
 				<div className='px-4 mt-12'>
 					<div className='text-center text-2xl font-extrabold'>
-						Minted Utility NFTs
+						Minted NFT
 					</div>
 					{mintLoadingState === 0 ? (
 						txError === null ? (
 							<div className='flex flex-col justify-center items-center'>
-								<div className='text-lg font-bold mt-16'>Loading the NFTs</div>
+								<div className='text-lg font-bold mt-16'>Loading Items</div>
 								<Loader
 									className='flex justify-center items-center pt-12'
 									type='TailSpin'
@@ -154,7 +154,7 @@ const Home = () => {
 						)
 					) : nfts.length === 0 ? (
 						<div className='text-center text-lg font-semibold mt-4 text-gray-600'>
-							No NFT is minted.
+							No NFT minted.
 						</div>
 					) : (
 						<div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 pt-4 mt-4'>
@@ -169,7 +169,7 @@ const Home = () => {
 											className='w-full bg-gray-800 text-white font-bold py-2 px-12 rounded-lg hover:shadow-lg hover:scale-105 transition duration-500 ease-in-out'
 											onClick={() => sellToken(nft.id)}
 										>
-											Sell Yout NFT
+											Sell
 										</button>
 									</div>
 								</div>
@@ -181,12 +181,12 @@ const Home = () => {
 			<div className='flex justify-center'>
 				<div className='px-4 mt-12'>
 					<div className='text-center text-2xl font-extrabold'>
-						Bought NFTs
+						Bought Utility Items
 					</div>
 					{boughtLoadingState === 0 ? (
 						txError === null ? (
 							<div className='flex flex-col justify-center items-center'>
-								<div className='text-lg font-bold mt-16'>Loading the NFTs</div>
+								<div className='text-lg font-bold mt-16'>Loading Items</div>
 								<Loader
 									className='flex justify-center items-center pt-12'
 									type='TailSpin'
@@ -202,7 +202,7 @@ const Home = () => {
 						)
 					) : boughtNfts.length === 0 ? (
 						<div className='text-lg font-semibold mt-4 text-gray-600'>
-							You have no NFTs.
+							No bought Utility NFT items.
 						</div>
 					) : (
 						<div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 pt-4 mt-4 pb-8'>

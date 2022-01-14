@@ -3,10 +3,10 @@ pragma solidity 0.8.11;
 
 import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
-import { Base64 } from "./library/base64.sol";
+import { Base64 } from "./libraries/Base64.sol";
 
 
-/// @title Utility NFT
+/// @title UtilityNFT
 /// @author Lawal Abubakar Babatunde
 /// @notice This contract is used to create an NFT token that can be minted and owned by anyone.
 /// @dev Inherits from ERC721URIStorage contract for ERC-721 token functionality.
@@ -99,7 +99,7 @@ contract UtilityNFT is ERC721URIStorage {
     }
 
 
-    /// @notice Randomly picks second word of the NFT from the wepon array
+    /// @notice Randomly picks second word of the NFT from the weapon array
     /// @param tokenId TokenId of the current NFT
     /// @return string The word picked from the array
     function pickSecondWord(uint256 tokenId) public view returns(string memory) {
@@ -108,7 +108,7 @@ contract UtilityNFT is ERC721URIStorage {
         return weapon[rand];
     }
 
-    /// @notice Randomly picks third word of the NFT from the wepon array
+    /// @notice Randomly picks third word of the NFT from the weapon array
     /// @param tokenId TokenId of the current NFT
     /// @return string The word picked from the array
     function pickThirdWord(uint256 tokenId) public view returns(string memory) {
@@ -117,7 +117,7 @@ contract UtilityNFT is ERC721URIStorage {
         return rank[rand];
     }
 
-    /// @notice Mints a new Eternal NFT token
+    /// @notice Mints a new Utility NFT token
     /// @dev uses generates a final tokenURI by using the base64 encoded json data
     /// @return uint256 The tokenId of the minted NFT
     function createUtilityNFT() public returns(uint256) {
@@ -136,7 +136,7 @@ contract UtilityNFT is ERC721URIStorage {
                     abi.encodePacked(
                     '{"name": "',
                         combinedWord,
-                        '", "description": "A highly acclaimed collection Eternal Warriors", "image": "data:image/svg+xml;base64,',
+                        '", "description": "A highly acclaimed collection Utility Warriors", "image": "data:image/svg+xml;base64,',
                         Base64.encode(bytes(finalSvg)),
                     '"}'
                     )

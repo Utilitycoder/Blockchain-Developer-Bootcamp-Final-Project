@@ -84,17 +84,17 @@ const mint = () => {
 	return (
 		<div className='flex flex-col items-center pt-32'>
 			<h2 className='text-3xl font-bold mb-20'>
-				Mint your Utility NFT!
+				Mint your Utility Domain NFT!
 			</h2>
 			<button
 				className='text-2xl font-bold py-3 px-12 bg-gray-800 text-gray-200 shadow-xl rounded-lg mb-10 hover:scale-105 transition duration-500 ease-in-out'
 				onClick={mintCharacter}
 			>
-				Mint a Character
+				Mint Character
 			</button>
 			<div className='text-xl font-semibold mb-24'>
 				<a
-					href='https://testnets.opensea.io/collection/eternalnft-fyuhpt7vhe'
+					href='https://testnets.opensea.io/collection/utilitynft-fyuhpt7vhe'
 					target='_blank'
 				>
 					<span>🌊</span>{' '}
@@ -106,7 +106,7 @@ const mint = () => {
 					txError === null ? (
 						<div className='flex flex-col justify-center items-center'>
 							<div className='text-lg font-bold'>
-								Please wait while your transaction is processing.
+								Please wait, your transaction is processing.
 							</div>
 							<Loader
 								className='flex justify-center items-center pt-12'
@@ -125,7 +125,7 @@ const mint = () => {
 			) : (
 				<div>
 					<div className='font-semibold text-lg text-center mb-4'>
-						Your Utility NFT Character
+						Your Utility Domain Character
 					</div>
 					<img
 						src={mintedNFT}

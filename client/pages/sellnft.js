@@ -81,7 +81,7 @@ const sellnft = () => {
 				const tokenId = router.query.id
 
 				setMiningStatus(0)
-				let listingPrice = await marketContract.getInitialPrice()
+				let listingPrice = await marketContract.getListingPrice()
 				listingPrice = listingPrice.toString()
 
 				const itemPrice = ethers.utils.parseUnits(price, 'ether')
@@ -179,7 +179,7 @@ const sellnft = () => {
 						type='text'
 						onChange={handleChange}
 						name='name'
-						placeholder='Eternal NFT Price'
+						placeholder='Utility NFT Price'
 						className='h-12 rounded-lg shadow-lg px-4 font-bold bg-white focus:outline-none focus:ring-2 focus:ring-gray-800 focus:border-transparent'
 					/>
 					<buttom
