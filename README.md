@@ -1,10 +1,10 @@
 # Final project - Eternal Domain Marketplace
 
 ## Table of Contents:
-  - [Deployed Website url](#deployed-website-url)
-  - [Screencast link](#screencast-link)
-  - [Public Ethereum wallet](#public-ethereum-wallet)
   - [Project Description](#project-description)
+  - [Screencast link](#screencast-link)
+  - [Deployed Website url](#deployed-website-url)
+  - [Public Ethereum wallet](#public-ethereum-wallet)
   - [Workflow](#workflow)
   - [Related docs](#related-docs)
   - [Directory structure](#directory-structure)
@@ -17,42 +17,47 @@
   - [Troubleshooting](#troubleshooting)
   - [TODO](#todo)
 
-## Deployed Website url
+## Project Description
 
-https://eternal-domain.vercel.app/
+**Utility NFT Marketplace** is a marketplace where users can buy, sell and mint **Unique images**, which are ERC-721 standard (NFT) tokens.
+
+The NFT images consist of 3 main characteristics, **Weapon, Area of Control, and Rank**.
+
+- **Weapon -** Sword, Spear, Shield, Hammer, Saber, Axe, Bow, Staff, Wand, Fist, Dagger, Scythe, Mace, Blade, Katana
+- **Area of Control -** Fire, Wind, Wave, Earth, Light, Shadow, Thunder, Space, Time, Gravity, Ice
+- **Rank -** Lord, King, Emperor, Venerable, Ancestor, Saint, God
 
 ## Screencast link
 https://youtu.be/ddcQU3dwEe8
 
+## Deployed Website url
+
+https://utilitynftplace.vercel.app/
+
+
 ## Public Ethereum wallet
-`0xc40a8C17aF0D57d788d0502f9293aCF0108823d5`
+`0x78C267869e588823F6D1660EBE6e286deE297f0a`
 
-## Project Description
-
-**Eternal Domain** is a marketplace where users can buy, sell and mint **Eternal Characters**, which are ERC-721 standard (NFT) tokens.
-
-Eternal Characters are the residents of **Eternal Domain** world. They consist of 3 main characteristics, **Area of Control, Weapon and Rank**.
-
-- **Area of Control -** Fire, Wind, Wave, Earth, Light, Shadow, Thunder, Space, Time, Gravity, Ice
-- **Weapon -** Sword, Spear, Shield, Hammer, Saber, Axe, Bow, Staff, Wand, Fist, Dagger, Scythe, Mace, Blade, Katana
-- **Rank -** Lord, King, Emperor, Venerable, Ancestor, Saint, God
 
 ## Workflow
 
-1. Enter the dApp and connect the wallet to rinkeby network.
-2. After entering the dApp the user can:
-   1. **Buy Characters**
-      - Go to the **Home** page and click on the item which user want to buy.
-      - User will be redirected to the **BuyNFT** page which shows the price and other details about the item.
-      - Click on the **Buy** button to buy the item.
-      - Metamask pops up and asks to confirm the transaction for the price of the item.
-      - After the transaction is successfully processed user is redirected to the **My NFT** page.
-      - The bought item is displayed under the **Bought Characters** section
-   2. **Mint Characters**
-      - Go to the mint page and click on the **Mint Character** button.
-      - Metamask pops up and asks to confirm the transaction.
+1. User load the website address and connect their wallet, which is set to rinkeby network
+2. After users have connected to the dApp, they can:
+   
+    1. **Mint Characters**
+      - User goes to mint page and click on the **Mint Character** button.
+      - Metamask pops up and asks user to confirm the transaction.
       - After the transaction is successfully processed the user can see the minted character.
-      - The minted character is also added to **My NFT** page under **Minted Characters** section.
+      - The minted character is also added to **My NFT** page under **Minted Characters** section. The user can see NFTs they minted. 
+
+   2. **Buy Characters**
+      - The homepage consist of NFTs listed by other users. So user can click on any NFT they want to buy.
+      - User will be redirected to the **BuyNFT** page which shows the price and other details about the NFT they clicked in step 1 .
+      - Click on the **Buy** button to buy the NFT.
+      - Metamask pops up and asks user to confirm the transaction for the price of the NFT.
+      - After the transaction is successfully processed, user is redirected to the **My NFT** page.
+      - The bought item is displayed under the **Bought Characters** section
+
    3. **Sell Characters**
       - Go to the **My NFT** page and click on the **Sell** button under the minted item which user want to sell.
       - User will be redirected to the **SellNFT** page where user can enter the price for the item.

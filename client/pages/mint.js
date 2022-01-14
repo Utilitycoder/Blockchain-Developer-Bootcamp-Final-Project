@@ -84,13 +84,13 @@ const mint = () => {
 	return (
 		<div className='flex flex-col items-center pt-32'>
 			<h2 className='text-3xl font-bold mb-20'>
-				Mint your Utility Domain NFT!
+				Mint your NFT!
 			</h2>
 			<button
 				className='text-2xl font-bold py-3 px-12 bg-gray-800 text-gray-200 shadow-xl rounded-lg mb-10 hover:scale-105 transition duration-500 ease-in-out'
 				onClick={mintCharacter}
 			>
-				Mint Character
+				Mint NFT
 			</button>
 			<div className='text-xl font-semibold mb-24'>
 				<a
@@ -125,7 +125,7 @@ const mint = () => {
 			) : (
 				<div>
 					<div className='font-semibold text-lg text-center mb-4'>
-						Your Utility Domain Character
+						Your Utility NFT
 					</div>
 					<img
 						src={mintedNFT}
