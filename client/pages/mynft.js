@@ -181,7 +181,7 @@ const Home = () => {
 			<div className='flex justify-center'>
 				<div className='px-4 mt-12'>
 					<div className='text-center text-2xl font-extrabold'>
-						Bought Utility Items
+						NFT Bought From Marketplace
 					</div>
 					{boughtLoadingState === 0 ? (
 						txError === null ? (
@@ -202,7 +202,7 @@ const Home = () => {
 						)
 					) : boughtNfts.length === 0 ? (
 						<div className='text-lg font-semibold mt-4 text-gray-600'>
-							No bought Utility NFT items.
+							There's nothing to show here. You can buy from the marketplace.
 						</div>
 					) : (
 						<div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 pt-4 mt-4 pb-8'>

@@ -44,27 +44,27 @@ https://utilitynftplace.vercel.app/
 1. User load the website address and connect their wallet, which is set to rinkeby network
 2. After users have connected to the dApp, they can:
    
-    1. **Mint Characters**
-      - User goes to mint page and click on the **Mint Character** button.
+    1. **Mint NFT**
+      - User goes to mint page and click on the **Mint NFT** button.
       - Metamask pops up and asks user to confirm the transaction.
       - After the transaction is successfully processed the user can see the minted character.
-      - The minted character is also added to **My NFT** page under **Minted Characters** section. The user can see NFTs they minted. 
+      - The minted character is also added to **My NFT** page under **Minted NFT** section. The user can see NFTs they minted. 
 
-   2. **Buy Characters**
+   2. **Buy NFTs**
       - The homepage consist of NFTs listed by other users. So user can click on any NFT they want to buy.
       - User will be redirected to the **BuyNFT** page which shows the price and other details about the NFT they clicked in step 1 .
       - Click on the **Buy** button to buy the NFT.
       - Metamask pops up and asks user to confirm the transaction for the price of the NFT.
       - After the transaction is successfully processed, user is redirected to the **My NFT** page.
-      - The bought item is displayed under the **Bought Characters** section
+      - The bought NFT is displayed under the **NFT Bought From Marketplace** section
 
-   3. **Sell Characters**
-      - Go to the **My NFT** page and click on the **Sell** button under the minted item which user want to sell.
-      - User will be redirected to the **SellNFT** page where user can enter the price for the item.
-      - After entering the desired price, click on the **Sell** button to list the item in the market place.
+   3. **Sell NFTs**
+      - Go to the **My NFT** page and click on the **Sell** button under the minted NFT which user want to sell.
+      - User will be redirected to the **SellNFT** page where user can enter the price they want to sell their NFT.
+      - After entering the desired price, click on the **Sell** button to list the NFT in the market place.
       - Metamask pops up and asks to confirm the transaction for the listing price.
       - After the transaction is successfully processed user is redirected to the **Home** page.
-      - The item will be listed in the marketplace to be bought for the price entered by the user.
+      - The NFT will be listed in the marketplace to be bought for the price entered by the user.
 
 ## Related docs
 - [deployed_address.txt](https://github.com/AbhinavXT/blockchain-developer-bootcamp-final-project/blob/main/deployed_address.txt)
