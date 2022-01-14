@@ -1,4 +1,4 @@
-# Final project - Eternal Domain Marketplace
+# Final project - Utility NFT Marketplace
 
 ## Table of Contents:
   - [Project Description](#project-description)
@@ -67,9 +67,9 @@ https://utilitynftplace.vercel.app/
       - The NFT will be listed in the marketplace to be bought for the price entered by the user.
 
 ## Related docs
-- [deployed_address.txt](https://github.com/AbhinavXT/blockchain-developer-bootcamp-final-project/blob/main/deployed_address.txt)
-- [design_pattern_decisions.md](https://github.com/AbhinavXT/blockchain-developer-bootcamp-final-project/blob/main/design_pattern_decisions.md)
-- [avoiding_common_attacks.md](https://github.com/AbhinavXT/blockchain-developer-bootcamp-final-project/blob/main/avoiding_common_attacks.md)
+- [design_pattern_decisions.md](https://github.com/Utilitycoder/blockchain-developer-bootcamp-final-project/blob/main/design_pattern_decisions.md)
+- [deployed_address.txt](https://github.com/Utilitycoder/blockchain-developer-bootcamp-final-project/blob/main/deployed_address.txt)
+- [avoiding_common_attacks.md](https://github.com/Utilitycoder/blockchain-developer-bootcamp-final-project/blob/main/avoiding_common_attacks.md)
 
 ## Directory structure
 
