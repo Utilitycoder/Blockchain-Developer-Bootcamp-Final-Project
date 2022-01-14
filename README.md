@@ -87,8 +87,8 @@ blockchain-developer-bootcamp-final-project
  ┃ ┃ ┣ favicon.ico
  ┃ ┃ ┗ vercel.svg
  ┃ ┣ utils
- ┃ ┃ ┣ EternalMarketplace.json
- ┃ ┃ ┗ EternalNFT.json
+ ┃ ┃ ┣ UtilityMarketplace.json
+ ┃ ┃ ┗ UtilityNFT.json
  ┃ ┣ .gitignore
  ┃ ┣ README.md
  ┃ ┣ config.js
@@ -99,18 +99,21 @@ blockchain-developer-bootcamp-final-project
  ┣ contracts
  ┃ ┣ libraries
  ┃ ┃ ┗ Base64.sol
- ┃ ┣ EternalMarketplace.sol
- ┃ ┗ EternalNFT.sol
+ ┃ ┣ UtilityMarketplace.sol
+ ┃ ┗ UtilityNFT.sol
  ┣ scripts
  ┃ ┣ deploy.js
  ┃ ┗ run.js
  ┣ test
- ┃ ┗ eternalTest.js
- ┣ .gitignore
+ ┃ ┗ UtilityTest.js
+ ┣.DS_Store
+ ┣.gitattributes
+ ┣.gitignore
  ┣ README.md
  ┣ avoiding_common_attacks.md
  ┣ deployed_address.txt
  ┣ design_pattern_decisions.md
+ ┣ final-project-checklist.txt
  ┣ hardhat.config.js
  ┣ package-lock.json
  ┗ package.json
@@ -118,21 +121,22 @@ blockchain-developer-bootcamp-final-project
 
 ## Clone, Install and Build steps
 
-### Prerequisites
+### What is required:
 
 1. [Git](https://git-scm.com/)
 2. [Node JS](https://nodejs.org/en/) (everything was installed and tested under v15.12.0)
-3. A Browser with the [MetaMask extension](https://metamask.io/) installed.
-4. Test Ether on the Rinkeby network.
+3. Test Ether on the Rinkeby network.
+4. A Browser with the [MetaMask extension](https://metamask.io/) installed.
+
 
 <br>
 
 ### Cloning and installing dependencies
 
-1. Clone the project repository on your local machine
+1. Clone my project repository and run it on your local machine
 
 ```
- git clone https://github.com/AbhinavXT/blockchain-developer-bootcamp-final-project.git
+ git clone https://github.com/Utilitycoder/blockchain-developer-bootcamp-final-project.git
 
  cd blockchain-developer-bootcamp-final-project
 ```
@@ -149,9 +153,9 @@ blockchain-developer-bootcamp-final-project
   npm install
   ```
 
-### Testing Contracts
+### Testing Smart Contracts
 
-For testing contracts run command:
+For testing contracts, run command:
 
 ```
 npx hardhat test
@@ -183,16 +187,16 @@ npx hardhat run scripts/deploy.js --network localhost
 3. When the deployment is complete, the CLI should print out the addresses of the contracts that were deployed:
 
 ```
-nftMarket contract deployed to: 'EternalMarketplace contract address'
+nftMarket contract deployed to: 'UtilityMarketplace contract address'
 
-nft contract deployed to: 'EternalNFT contract address'
+nft contract deployed to: 'UtilityNFT contract address'
 ```
 
-4. Copy these addresses and paste them in the [**config.js**](https://github.com/AbhinavXT/blockchain-developer-bootcamp-final-project/blob/main/client/config.js) file inside the client floder, in place of current addresses.
+4. Copy these addresses and paste them in the [**config.js**](https://github.com/Utilitycoder/blockchain-developer-bootcamp-final-project/blob/main/hardhat.config.js) file inside the client floder, in place of current addresses.
 ```
-export const nftMarketAddress = 'EternalNFT contract address'
+export const nftMarketAddress = 'UtilityNFT contract address'
 
-export const nftContractAddress = 'EternalMarketplace contract address'
+export const nftContractAddress = 'UtilityMarketplace contract address'
 ```
 
 5. For importing account to metamask
@@ -211,22 +215,23 @@ npm run dev
 ```
 After this you can run and test the dApp locally in your web browser.
 
-### Environment variables (not needed for running project locally)
+### Environment variables (you don't need this if you're running the project locally)
 ```
-INFURA_RINKEBY_URL =
-ACCOUNT_KEY =
+RINKEBY_URL =
+PRIVATE_KEY =
 ```
 
 ## Troubleshooting
 ### For custom chainId
 The default chainId for network localhost8545 is 1337. To change the chainId, the user should follow these steps :
-1. Change the chainId in networks under hardhat in [hardhat.config.js](https://github.com/AbhinavXT/blockchain-developer-bootcamp-final-project/blob/main/hardhat.config.js) file.
+1. Change the chainId in networks under hardhat in [hardhat.config.js](https://github.com/Utilitycoder/blockchain-developer-bootcamp-final-project/blob/main/hardhat.config.js) file.
 ```
 hardhat: {
   chainId: 1337,
 }
 ```
-2. After this the user needs to change the devChainId in the [_app.js](https://github.com/AbhinavXT/blockchain-developer-bootcamp-final-project/blob/main/client/pages/_app.js) file on line 61 and 86 under the functions **connectWallet()** and **checkCorrectNetwork()** respectively.
+2. After this the user needs to change the devChainId in the [_app.js](https://github.com/Utilitycoder/blockchain-developer-bootcamp-final-project/blob/main/client/pages/_app.js) file on line 61 and 86 under the functions **connectWallet()** and **checkCorrectNetwork()** respectively.
+
 ```
 const devChainId = 1337
 ```
@@ -236,4 +241,8 @@ While testing the dApp on against a local instance, if you get the **Nonce too h
 
 ## TODO
 - Using oracle for on chain randomness in generating NFTs
-- Selling feture for bought eternal items
+- Allowing Users to mint NFT from their local machine
+- Letting users list NFTs that are minted from other places
+- Improve the look and feel of the User Interface.
+- Add other trendy features that can hook users to the service the project offers.
+
