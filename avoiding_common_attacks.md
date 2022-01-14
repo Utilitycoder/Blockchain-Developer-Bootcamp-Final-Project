@@ -1,12 +1,6 @@
 # Avoiding Common Attacks
 
-The following measures were applied in 
-
-[UtilityNFT.sol](https://github.com/Utilitycoder/blockchain-developer-bootcamp-final-project/blob/main/contracts/UtilityNFT.sol) 
-
-and 
-
-[UtilityMarketplace.sol](https://github.com/Utilitycoder/blockchain-developer-bootcamp-final-project/blob/main/contracts/UtilityMarketplace.sol) contracts to avoid common security pitfalls:
+The following measures were applied in [UtilityNFT.sol](https://github.com/Utilitycoder/blockchain-developer-bootcamp-final-project/blob/main/contracts/UtilityNFT.sol) and [UtilityMarketplace.sol](https://github.com/Utilitycoder/blockchain-developer-bootcamp-final-project/blob/main/contracts/UtilityMarketplace.sol) contracts to avoid common security pitfalls:
 
 
 - **Proper setting of visibility for functions**: Functions are specified as being external, public, internal or private to reduce the attack surface of a contract system. - [SWC-100](https://swcregistry.io/docs/SWC-100)
