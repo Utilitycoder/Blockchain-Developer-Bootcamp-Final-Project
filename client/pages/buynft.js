@@ -159,12 +159,8 @@ const buynft = () => {
 							<div>{id}</div>
 						</div>
 						<div className='flex justify-between'>
-							<div>Token Standard:</div>
+							<div>Token Standard: </div>
 							<div>ERC-721</div>
-						</div>
-						<div className='flex justify-between'>
-							<div>Blockchain:</div>
-							<div>Rinkeby</div>
 						</div>
 					</div>
 				</div>

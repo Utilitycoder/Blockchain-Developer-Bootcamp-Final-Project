@@ -114,7 +114,7 @@ function MyApp({ Component, pageProps }) {
 						</svg>
 					</div>
 					<div className='text-3xl font-extrabold'>
-						Welcome to Utility Domain
+						Welcome to Utility NFT Marketplace
 					</div>
 					<button
 						className='text-2xl font-bold py-3 px-12 bg-gray-800 text-gray-100 shadow-xl rounded-lg mb-10 hover:scale-105 transition duration-500 ease-in-out'
@@ -190,7 +190,8 @@ function MyApp({ Component, pageProps }) {
 			) : (
 				<div className='flex flex-col justify-center items-center pt-40 font-bold text-2xl gap-y-3'>
 					<div>----------------------------------------</div>
-					<div>Please reload the page</div>
+					<div>Please connect to Rinkeby Test Network</div>
+					<div>Then reload the reload the page</div>
 					<div>----------------------------------------</div>
 				</div>
 			)}

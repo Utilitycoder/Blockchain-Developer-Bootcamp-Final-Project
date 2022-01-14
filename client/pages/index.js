@@ -96,7 +96,7 @@ export default function Home() {
 				{loadingState === 0 ? (
 					txError === null ? (
 						<div className='flex flex-col justify-center items-center'>
-							<div className='text-lg font-bold mt-16'>Loading NFT Items</div>
+							<div className='text-lg font-bold mt-16'>Loading NFT</div>
 							<Loader
 								className='flex justify-center items-center pt-12'
 								type='TailSpin'
@@ -168,7 +168,7 @@ export default function Home() {
 					</div>
 				) : (
 					<div className='text-centre font-bold text-xl mt-16'>
-						No Items Available in Marketplace
+						No NFT Available in Marketplace
 					</div>
 				)}
 			</div>
