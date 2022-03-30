@@ -28,7 +28,7 @@ The NFT images consist of 3 main characteristics, **Weapon, Area of Control, and
 - **Rank -** Lord, King, Emperor, Venerable, Ancestor, Saint, God
 
 ## Screencast link
-https://www.loom.com/share/7580fb545bb84a329dfaca6d08fe02dd
+https://youtu.be/ddcQU3dwEe8
 
 ## Deployed Website url
 
@@ -245,4 +245,5 @@ While testing the dApp on against a local instance, if you get the **Nonce too h
 - Letting users list NFTs that are minted from other places
 - Improve the look and feel of the User Interface.
 - Add other trendy features that can hook users to the service the project offers.
+- Switching the account in Metamask is not handled on the website. Needs to be reloaded manually.
 
