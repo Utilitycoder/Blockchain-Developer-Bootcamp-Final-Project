@@ -28,7 +28,11 @@ The NFT images consist of 3 main characteristics, **Weapon, Area of Control, and
 - **Rank -** Lord, King, Emperor, Venerable, Ancestor, Saint, God
 
 ## Screencast link
+<<<<<<< HEAD
 https://youtu.be/ddcQU3dwEe8
+=======
+https://www.loom.com/share/e80b24c920084a598c946a7e7bf057a2
+>>>>>>> f16e92d1107c6649490ed82f24dcc4e783e7eb51
 
 ## Deployed Website url
 

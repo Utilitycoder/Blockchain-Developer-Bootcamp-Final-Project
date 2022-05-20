@@ -123,7 +123,7 @@ function MyApp({ Component, pageProps }) {
 						Connect Wallet
 					</button>
 				</div>
-			) : correctNetwork ? (
+			) : correctNetwork (
 				<div>
 					<div className='flex justify-between items-center pt-6 pb-4 px-20 shadow-xl'>
 						<Link href='/'>
@@ -186,13 +186,6 @@ function MyApp({ Component, pageProps }) {
 						</div>
 					</div>
 					<Component {...pageProps} />
-				</div>
-			) : (
-				<div className='flex flex-col justify-center items-center pt-40 font-bold text-2xl gap-y-3'>
-					<div>----------------------------------------</div>
-					<div>Please connect to Rinkeby Test Network</div>
-					<div>Then reload the reload the page</div>
-					<div>----------------------------------------</div>
 				</div>
 			)}
 		</div>
